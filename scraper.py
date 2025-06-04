@@ -71,7 +71,6 @@ def main():
         writer = csv.writer(f)
         writer.writerow(["Title", "Price"])
         writer.writerows(data)
-        writer.writerows(data)
 
 
 if __name__ == "__main__":
