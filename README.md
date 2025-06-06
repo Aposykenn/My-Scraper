@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-git clone https://github.com/kullanici/scraper.git
+git clone https://github.com/Aposykenn/Scraper.git
 cd scraper
 pip install -r requirements.txt
 ``` 
