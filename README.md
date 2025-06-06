@@ -1,45 +1,37 @@
-# My-Scraper
+# Scraper Project
 
-A basic but growing web scraping tool.  
-I'm learning Python through this project and I plan to use it for freelance gigs and personal automation.
+## Installation
 
----
+```bash
+git clone https://github.com/kullanici/scraper.git
+cd scraper
+pip install -r requirements.txt
+``` 
 
-## Features
-
-- CLI usage with `argparse`
-- Scrapes multiple paginated URLs (customizable pattern: `?page={page}`)
-- Filters items by keyword
-- HTML tag and class-based selection
-- HTTP and HTTPS proxy support
-- Saves output as CSV
-- Error handling + retry safety
-- Adjustable delay between requests (anti-ban friendly)
-
----
-
-## TODO
-
-- Custom output formats (CSV, JSON, TXT)
-- Multithreading or asynchronous scraping (maybe)
-- Advanced filtering options
-- Support for Selenium / Playwright
-- CSS selector + XPath / Regex support (maybe)
-- `.env` file support
-- Basic GUI  
-- Streamlit or Flask integration
-
----
-
-## 🧪 Example Usage
+## Usage
 
 ```bash
 python scraper.py \
-  --url "https://example.com/items" \
-  --tag "div" \
-  --class_ "item-class" \
-  --filter "keyboard" \
-  --pages 5 \
-  --page_format "?page={page}" \
-  --proxy_http "http://127.0.0.1:8080" \
-  --proxy_https "https://127.0.0.1:8080"
+  --url "https://Example.site/explore" \
+  --container-tag div --container-class container_world \
+  --title-tag span --title-class title \
+  --price-tag div --price-class price \
+  --pages 10 \
+  --timeout 5 \
+  --http-proxy http://127.0.0.1:8080
+```
+Note: --title-tag and --price-tag parameters are examples; they do not need to be literally title or price. You may substitute any valid HTML tag and class that correspond to the elements you wish to extract
+
+## What does it do
+
+- `scraper.py`: 
+  1. Downloads the page with using `requests` or `playwright`.
+  2. Uses `BeautifulSoup` to find items based on the container tag/class.
+  3. if `parse_item` is provided, extracts secondary info (e.g., price). 
+  4. writes results to `results.csv`.
+- `parse_item`: 
+  - extracts item title with given `tag1/class1`.
+  - if given `tag2/class2` it gets second info (price etc.).
+- If an error occurs, logs it to `scraper.log`.
+
+
