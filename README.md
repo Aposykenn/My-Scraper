@@ -2,8 +2,8 @@
 
 ## Installation
 
+after installing the file
 ```bash
-git clone https://github.com/Aposykenn/Scraper.git
 cd scraper
 pip install -r requirements.txt
 ``` 
